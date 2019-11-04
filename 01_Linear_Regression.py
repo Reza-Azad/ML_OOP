@@ -7,13 +7,11 @@ import pandas as pd
 import numpy as np
 import ML_Lib as ml
 from sklearn import preprocessing
-# dataset
-from sklearn.datasets import load_boston
+from sklearn.datasets import load_boston # dataset
 
 #Y is price of the homes
 #X is the input data
 X, Y = load_boston(return_X_y=True)
-print('type of data: ', type(X))
 print('shape of X: ', X.shape)
 print('shape of Y: ', Y.shape)
 #reshape Y
