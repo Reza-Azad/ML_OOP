@@ -18,11 +18,11 @@ print('shape of Y: ', Y.shape)
 Y = Y[:, np.newaxis]
 print('shape of Y after reshaping:', Y.shape)
 
-#create an instance of ridge regression class
-a = ml.ridge_regression_class(X, Y, name_of_saved_model='ridge01.sav', max_alpha=200)
+#create an instance of linear regression calss
+a = ml.linear_regression_class(X, Y, name_of_saved_model='linear_regression.sav')
 a.run()
-#create an instance of ridge regression perdict class
-model_input = preprocessing.scale(X[0,:])
+#create an instance of linear regression perdict class
+model_input = X[0,:]
 model_input = model_input.reshape([1, 13])
-b = ml.ridge_regression_perdict_class('ridge01.sav', model_input)
+b = ml.linear_regression_predict_class('linear_regression.sav', model_input)
 b.mpredict()
