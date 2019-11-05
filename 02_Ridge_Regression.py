@@ -1,7 +1,7 @@
 '''
 ridge regression model is generally better than 
 the OLS model in prediction
-In this code liner regression class will be 
+In this code Ridge Regression class will be 
 used to train boston house data set
 '''
 
