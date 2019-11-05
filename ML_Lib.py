@@ -19,7 +19,7 @@ class linear_regression_class():
         self.test_trian_ratio = test_trian_ratio
         self.name_of_saved_model = name_of_saved_model
         
-    def __mspilit_data__(self):
+    def __mspilit_data(self):
         '''split input X, Y in to train and test groups
            returns X_train, X_test, y_train, y_test'''
         
@@ -30,7 +30,7 @@ class linear_regression_class():
         return X_train, X_test, y_train, y_test
         
     
-    def __model_train__(self,X_train, X_test, y_train, y_test):
+    def __model_train(self,X_train, X_test, y_train, y_test):
         '''train linear regression model |
            returns model, rmse, r2 '''
         
@@ -52,7 +52,7 @@ class linear_regression_class():
 
 
 
-    def __train_final_model__(self):
+    def __train_final_model(self):
         '''train linear regression with whole data (without
         splitting) '''
         
@@ -68,7 +68,7 @@ class linear_regression_class():
         print('final model is saved to directory and ready to do predictions')
         
 
-    def __print_result__(self,min_rmse, corres_r2, best_poly_order, best_model ):
+    def __print_result(self,min_rmse, corres_r2, best_poly_order, best_model ):
         print('ratio of test to train dataset:  ', self.test_trian_ratio)
         print('best plynomial order: ', best_poly_order)
         print('min RMSE: ', min_rmse)
@@ -78,10 +78,10 @@ class linear_regression_class():
     
     def run(self):
         '''run model trianing process '''
-        X_train, X_test, y_train, y_test = self.__mspilit_data__()
-        self.__model_train__(X_train, X_test, y_train, y_test)
-        #self.__print_result__(min_rmse, corres_r2, best_poly_order, best_model)
-        self.__train_final_model__()      
+        X_train, X_test, y_train, y_test = self.__mspilit_data()
+        self.__model_train(X_train, X_test, y_train, y_test)
+        #self.__print_result(min_rmse, corres_r2, best_poly_order, best_model)
+        self.__train_final_model()      
 
  
 class linear_regression_predict_class():
@@ -121,7 +121,7 @@ class ridge_regression_class():
         self.max_alpha = max_alpha + 1 #since python exludes last member of range
         self.name_of_saved_model = name_of_saved_model
         
-    def __mspilit_scale_data__(self):
+    def __mspilit_scale_data(self):
         '''split input X, Y in to train and test groups
            and scale(standardize) x | 
            returns X_train, X_test, y_train, y_test'''
@@ -135,7 +135,7 @@ class ridge_regression_class():
         return X_train, X_test, y_train, y_test
         
     
-    def __model_train__(self,X_train, X_test, y_train, y_test, malpha):
+    def __model_train(self,X_train, X_test, y_train, y_test, malpha):
         '''train ridge regression model |
            returns model, rmse, r2 '''
         
@@ -153,13 +153,13 @@ class ridge_regression_class():
         
         return model, rmse, r2
 
-    def __find_best_model__(self,X_train, X_test, y_train, y_test):
+    def __find_best_model(self,X_train, X_test, y_train, y_test):
         '''find best alpha for model by minimum rmse (root mean square error)
         | returns min_rmse, corresponding_r2, best_alpha  '''
         
         print('Training is in progress ...')        
         for i in range(1, self.max_alpha): 
-            model, rmse, r2 = self.__model_train__(X_train, X_test, y_train, y_test, i)
+            model, rmse, r2 = self.__model_train(X_train, X_test, y_train, y_test, i)
             if i == 1 :
                 print('best alpha is:', i)
                 min_rmse = rmse
@@ -171,7 +171,7 @@ class ridge_regression_class():
     
         return min_rmse, corresponding_r2, best_alpha, best_model
 
-    def __train_final_model__(self, best_alpha):
+    def __train_final_model(self, best_alpha):
         '''trian ridge regression with whole data (without splitting) '''
         
         print('final model training is in progress...')
@@ -186,7 +186,7 @@ class ridge_regression_class():
         print('final model is saved to directory and ready to do predictions')
         
 
-    def __print_result__(self,min_rmse, corres_r2, best_alpha, best_model ):
+    def __print_result(self,min_rmse, corres_r2, best_alpha, best_model ):
         print('ratio of test to train dataset:  ', self.test_trian_ratio)
         print('best alpha: ', best_alpha)
         print('min RMSE: ', min_rmse)
@@ -196,10 +196,10 @@ class ridge_regression_class():
     
     def run(self):
         '''run model trianing process '''
-        X_train, X_test, y_train, y_test = self.__mspilit_scale_data__()
-        min_rmse, corres_r2, best_alpha, best_model =self.__find_best_model__(X_train, X_test, y_train, y_test)
-        self.__print_result__(min_rmse, corres_r2, best_alpha, best_model)
-        self.__train_final_model__(best_alpha)      
+        X_train, X_test, y_train, y_test = self.__mspilit_scale_data()
+        min_rmse, corres_r2, best_alpha, best_model =self.__find_best_model(X_train, X_test, y_train, y_test)
+        self.__print_result(min_rmse, corres_r2, best_alpha, best_model)
+        self.__train_final_model(best_alpha)      
     
 class ridge_regression_perdict_class():
     '''class for loading a saved ridge regression model and
