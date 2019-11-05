@@ -22,9 +22,9 @@ print('shape of Y after reshaping:', Y.shape)
 Boston_LR = ml.linear_regression_class(X, Y, name_of_saved_model='linear_regression.sav')
 Boston_LR.run()
 
-#first row of dataset for testing the loaded model
+#first row of dataset for testing the trained model
 model_input = X[0,:]
 model_input = model_input.reshape([1, 13])
-#create an instance of linear regression Predict class
+#create an instance of linear regression Predict class for loading the saved model
 Boston_Predict = ml.linear_regression_predict_class('linear_regression.sav', model_input)
 Boston_Predict.mpredict()
