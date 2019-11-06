@@ -39,3 +39,6 @@ model_input = model_input.reshape([1, 13])
 print('\nResult of Ridge rigression:')
 Boston_predict_RR = ml.ridge_regression_perdict_class('ridge01.sav', model_input)
 Boston_predict_RR.mpredict()
+
+#display first element of Y to compare Ridge and linear regression
+print('\nfirst element of Y to compare the result of Ridge and linear regression: ', Y[0])
