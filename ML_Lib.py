@@ -66,16 +66,7 @@ class linear_regression_class():
         pickle.dump(final_model, open(self.name_of_saved_model, 'wb'))
 
         print('final model is saved to directory and ready to do predictions')
-        
-
-    def __print_result(self,min_rmse, corres_r2, best_poly_order, best_model ):
-        print('ratio of test to train dataset:  ', self.test_trian_ratio)
-        print('best plynomial order: ', best_poly_order)
-        print('min RMSE: ', min_rmse)
-        print('corrseponding r2: ', corres_r2)
-        #print('coef of the model:', best_model.coef_) #uncomment this line to see the coefficients of the model
-        #print('rank of the model: ', best_model.rank_) uncomment this line to see the rank of the model
-    
+            
     def run(self):
         '''run model trianing process '''
         X_train, X_test, y_train, y_test = self.__mspilit_data()
