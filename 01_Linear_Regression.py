@@ -7,6 +7,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression, Ridge
+import numpy as np
 
 #load csv file
 sales = pd.read_csv('databases/kc_house_data.csv')
@@ -22,10 +23,9 @@ print('print the number of null values in each column', sales.isnull().sum())
 #create a copy to protect the original dataset from manipulation
 sales_copy = sales.copy()
 #create feature dataset
-sales_features = sales_copy.drop(columns='price')
-
-print('features shape: ', sales_features.shape)
-
+sales_features_dataset = sales_copy.drop(columns='price')
+#creat feature nparray
+sales_features = np.array(sales_features_dataset)
 
 
 
