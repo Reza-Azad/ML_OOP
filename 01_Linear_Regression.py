@@ -10,7 +10,7 @@ from sklearn.linear_model import LinearRegression, Ridge
 import numpy as np
 from sklearn.metrics import mean_squared_error, r2_score
 
-#==================================================================
+#===============================================================================
 #create feed data for the model
 
 #load csv file
@@ -19,12 +19,10 @@ sales = pd.read_csv('databases/kc_house_data.csv')
 print('data frame shape: ', sales.shape)
 print('data frame columns: \n', sales.columns)
 #handeling the null values in the dataset
-print('print the number of null values in each column', sales.isnull().sum())
+print('number of null values in each column:\n', sales.isnull().sum())
 # if there are some null values you have two options:
 #   1. fill the null fields with a space: modifiedSales = sales.fillna(“ “)
 #   2. omit the the row with null fields: modifiedSales = sales.dropna()
-
-print(sales.head())
 
 #create a copy to protect the original dataset from manipulation
 sales_copy = sales.copy()
@@ -48,11 +46,11 @@ X_train, X_test, y_train, y_test = train_test_split(sales_features,
                                                     test_size=.3,
                                                     random_state = 0)
 
-#==================================================================
+#===============================================================================
 #model train and evalute
 
 #create and fit linear regression model
-model = LinearRegression()
+model = LinearRegression(n_jobs=2)
 model.fit(X_train, y_train)
 
 #aplly the model for predictting the test set outcome
@@ -66,7 +64,7 @@ r2 = r2_score(y_test,test_set_predict)
 print('model rmse: ', rmse)
 print('model r2: ', r2)
 
-
+print(model.__class__())
 
 
 print('\n\nCode is Done\n')
