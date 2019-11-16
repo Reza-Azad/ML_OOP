@@ -64,8 +64,8 @@ test_set_predict = model_o1.predict(X_test)
 rmse_o1 = np.sqrt(mean_squared_error(y_test,test_set_predict))
 #compute r2 score, 1 is optimal
 r2_o1 = r2_score(y_test,test_set_predict)
-#print rsme and r2
 
+#print rsme and r2
 print('model(order = 1) rmse: ', rmse_o1)
 print('model r2(order = 1): ', r2_o1)
 
@@ -90,8 +90,8 @@ test_set_predict = model_o2.predict(X_test_poly)
 rmse_o2 = np.sqrt(mean_squared_error(y_test,test_set_predict))
 #compute r2 score, 1 is optimal
 r2_o2 = r2_score(y_test,test_set_predict)
-#print rsme and r2
 
+#print rsme and r2
 print('model(order = 2) rmse: ', rmse_o2)
 print('model(order = 2) r2: ', r2_o2)
 
