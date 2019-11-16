@@ -10,6 +10,10 @@ from sklearn.linear_model import LinearRegression, Ridge
 import numpy as np
 from sklearn.metrics import mean_squared_error, r2_score
 
+
+
+from sklearn.preprocessing import PolynomialFeatures
+
 #===============================================================================
 #create feed data for the model
 
@@ -29,6 +33,7 @@ sales_copy = sales.copy()
 #create feature dataset considering all columns except... 
 #...date for being not integer and obviously the price
 sales_features_dataset = sales_copy.drop(columns=['price', 'date'])
+
 #create feature nparray (X)
 sales_features = np.array(sales_features_dataset)
 #create target nparray (Y)
@@ -47,24 +52,47 @@ X_train, X_test, y_train, y_test = train_test_split(sales_features,
                                                     random_state = 0)
 
 #===============================================================================
-#model train and evalute
+#order=1 model train and evalute 
 
 #create and fit linear regression model
-model = LinearRegression()
-model.fit(X_train, y_train)
+model_o1 = LinearRegression()
+model_o1.fit(X_train, y_train)
 
 #aplly the model for predictting the test set outcome
-test_set_predict = model.predict(X_test)
+test_set_predict = model_o1.predict(X_test)
 #compute root mean squere error
-rmse = np.sqrt(mean_squared_error(y_test,test_set_predict))
+rmse_o1 = np.sqrt(mean_squared_error(y_test,test_set_predict))
 #compute r2 score, 1 is optimal
-r2 = r2_score(y_test,test_set_predict)
+r2_o1 = r2_score(y_test,test_set_predict)
 #print rsme and r2
 
-print('model rmse: ', rmse)
-print('model r2: ', r2)
+print('model(order = 1) rmse: ', rmse_o1)
+print('model r2(order = 1): ', r2_o1)
 
-print(model.__class__())
 
+#===============================================================================
+#order=2 model train and evalute
+
+#compute higher order polynomial feed data
+polynomial_features= PolynomialFeatures(degree=2)
+X_train_poly = polynomial_features.fit_transform(X_train)
+X_test_poly = polynomial_features.fit_transform(X_test)
+
+
+#create and fit linear regression model
+model_o2 = LinearRegression()
+model_o2.fit(X_train_poly, y_train)
+
+
+#aplly the model for predictting the test set outcome
+test_set_predict = model_o2.predict(X_test_poly)
+#compute root mean squere error
+rmse_o2 = np.sqrt(mean_squared_error(y_test,test_set_predict))
+#compute r2 score, 1 is optimal
+r2_o2 = r2_score(y_test,test_set_predict)
+#print rsme and r2
+
+print('model(order = 2) rmse: ', rmse_o2)
+print('model(order = 2) r2: ', r2_o2)
 
 print('\n\nCode is Done\n')
