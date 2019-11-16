@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression, Ridge
 import numpy as np
+from sklearn.metrics import mean_squared_error, r2_score
 
 #load csv file
 sales = pd.read_csv('databases/kc_house_data.csv')
@@ -47,6 +48,16 @@ X_train, X_test, y_train, y_test = train_test_split(sales_features,
 model = LinearRegression()
 model.fit(X_train, y_train)
 
+#aplly the model for predictting the test set outcome
+test_set_predict = model.predict(X_test)
+#compute root mean squere error
+rmse = np.sqrt(mean_squared_error(y_test,test_set_predict))
+#compute r2 score, 1 is optimal
+r2 = r2_score(y_test,test_set_predict)
+#print rsme and r2
+
+print('model rmse: ', rmse)
+print('model r2: ', r2)
 
 
 
