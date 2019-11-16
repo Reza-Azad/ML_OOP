@@ -1,6 +1,6 @@
 '''
-In this file an instance of Linear regression class
-will be used to be trained by boston house dataset.
+In this file linear regression will be considered to do predictions
+also, an instance of Linear regression class will be used to be trained by the dataset.
 '''
 
 
