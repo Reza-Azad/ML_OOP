@@ -25,7 +25,8 @@ print(sales.head())
 
 #create a copy to protect the original dataset from manipulation
 sales_copy = sales.copy()
-#create feature dataset
+#create feature dataset considering all columns except... 
+#...date for being not integer and obviously the price
 sales_features_dataset = sales_copy.drop(columns=['price', 'date'])
 #create feature nparray (X)
 sales_features = np.array(sales_features_dataset)
