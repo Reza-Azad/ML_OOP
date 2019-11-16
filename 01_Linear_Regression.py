@@ -1,6 +1,6 @@
 ''' 
 In this file linear regression will be considered to do predictions
-also, an instance of Linear regression class will be used to be trained by the dataset.
+Also, an instance of Linear regression class will be used to be trained by the dataset.
 '''
 
 import pandas as pd
@@ -37,8 +37,7 @@ print('shape of target:', target.shape)
 target = target[:, np.newaxis]
 print('shape of target after reshape to 2D:', target.shape)
 
-
-
+#splitting the sales_features and target to train and test sets
 X_train, X_test, y_train, y_test = train_test_split(sales_features, 
                                                     target,
                                                     test_size=.3,
