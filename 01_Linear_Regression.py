@@ -20,10 +20,12 @@ print('print the number of null values in each column', sales.isnull().sum())
 #   1. fill the null fields with a space: modifiedSales = sales.fillna(“ “)
 #   2. omit the the row with null fields: modifiedSales = sales.dropna()
 
+print(sales.head())
+
 #create a copy to protect the original dataset from manipulation
 sales_copy = sales.copy()
 #create feature dataset
-sales_features_dataset = sales_copy.drop(columns='price')
+sales_features_dataset = sales_copy.drop(columns=['price', 'date'])
 #create feature nparray (X)
 sales_features = np.array(sales_features_dataset)
 #create target nparray (Y)
@@ -33,21 +35,15 @@ print('shape of sales_feature: ', sales_features.shape)
 print('shape of target:', target.shape)
 #reshape target array to 2D
 target = target[:, np.newaxis]
-print('shape of target', target.shape)
+print('shape of target after reshape to 2D:', target.shape)
 
 
 
-X_train, X_test, y_train, y_test = train_test_split(sales['sqft_living'], 
-                                                    sales['price'],
+X_train, X_test, y_train, y_test = train_test_split(sales_features, 
+                                                    target,
                                                     test_size=.3,
                                                     random_state = 0)
 
-
-print('type of X_train:', type(X_train))
-print('shape of X_train:', X_train.shape)
-print('shape of Y_train:', y_train.shape)
-X_train.reshape(15129, 1)
-y_train.reshape(15129, 1)
 print('shape of X_train:', X_train.shape)
 print('shape of Y_train:', y_train.shape)
 #create and fit linear regression model
