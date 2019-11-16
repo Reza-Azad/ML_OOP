@@ -44,8 +44,6 @@ X_train, X_test, y_train, y_test = train_test_split(sales_features,
                                                     test_size=.3,
                                                     random_state = 0)
 
-print('shape of X_train:', X_train.shape)
-print('shape of Y_train:', y_train.shape)
 #create and fit linear regression model
 model = LinearRegression()
 model.fit(X_train, y_train)
