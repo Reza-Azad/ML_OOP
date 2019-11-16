@@ -50,7 +50,7 @@ X_train, X_test, y_train, y_test = train_test_split(sales_features,
 #model train and evalute
 
 #create and fit linear regression model
-model = LinearRegression(n_jobs=2)
+model = LinearRegression()
 model.fit(X_train, y_train)
 
 #aplly the model for predictting the test set outcome
