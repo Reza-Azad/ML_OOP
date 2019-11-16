@@ -10,6 +10,9 @@ from sklearn.linear_model import LinearRegression, Ridge
 import numpy as np
 from sklearn.metrics import mean_squared_error, r2_score
 
+#==================================================================
+#create feed data for the model
+
 #load csv file
 sales = pd.read_csv('databases/kc_house_data.csv')
 #print shape and name of columns
@@ -44,6 +47,9 @@ X_train, X_test, y_train, y_test = train_test_split(sales_features,
                                                     target,
                                                     test_size=.3,
                                                     random_state = 0)
+
+#==================================================================
+#model train and evalute
 
 #create and fit linear regression model
 model = LinearRegression()
