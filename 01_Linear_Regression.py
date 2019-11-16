@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression, Ridge
 
 #load csv file
-sales = pd.read_csv('kc_house_data.csv')
+sales = pd.read_csv('databases/kc_house_data.csv')
 #print shape and name of columns
 print('data frame shape: ', sales.shape)
 print('data frame columns: \n', sales.columns)
@@ -24,6 +24,7 @@ sales_copy = sales.copy()
 #create feature dataset
 sales_features = sales_copy.drop(columns='price')
 
+print('features shape: ', sales_features.shape)
 
 
 
