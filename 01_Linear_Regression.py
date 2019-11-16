@@ -24,10 +24,16 @@ print('print the number of null values in each column', sales.isnull().sum())
 sales_copy = sales.copy()
 #create feature dataset
 sales_features_dataset = sales_copy.drop(columns='price')
-#creat feature nparray
+#create feature nparray (X)
 sales_features = np.array(sales_features_dataset)
+#create target nparray (Y)
+target = np.array(sales['price'])
 
-
+print('shape of sales_feature: ', sales_features.shape)
+print('shape of target:', target.shape)
+#reshape target array to 2D
+target = target[:, np.newaxis]
+print('shape of target', target.shape)
 
 
 
