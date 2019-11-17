@@ -9,6 +9,9 @@ import ML_Lib as ml
 from sklearn import preprocessing
 from sklearn.datasets import load_boston # dataset
 
+#===============================================================================
+#prepare feed data
+
 #Y is price of the homes
 #X is the input data
 X, Y = load_boston(return_X_y=True)
@@ -17,6 +20,10 @@ print('shape of Y: ', Y.shape)
 #reshape Y
 Y = Y[:, np.newaxis]
 print('shape of Y after reshaping:', Y.shape)
+
+
+#===============================================================================
+#linear regression section
 
 #create an instance of linear regression calss
 Boston_LR = ml.linear_regression_class(X, Y, name_of_saved_model='linear_regression.sav')
@@ -30,6 +37,13 @@ print('\nResult of Linear rigression:')
 Boston_Predict_LR = ml.linear_regression_predict_class('linear_regression.sav', model_input)
 Boston_Predict_LR.mpredict()
 
+#===============================================================================
+#ridge regression section
+
+#create an instance of ridge regressoin class
+Boston_RR = ml.ridge_regression_class(X, Y, name_of_saved_model='ridge_r.sav')
+Boston_RR.run()
+
 #first row of data set for testing the trained model
 #for Ridge Regression the input for the model should be scaled
 model_input = preprocessing.scale(X[0,:]) 
@@ -37,7 +51,7 @@ model_input = model_input.reshape([1, 13])
 
 #create an instance of ridge regression predict class
 print('\nResult of Ridge rigression:')
-Boston_predict_RR = ml.ridge_regression_perdict_class('ridge01.sav', model_input)
+Boston_predict_RR = ml.ridge_regression_perdict_class('ridge_r.sav', model_input)
 Boston_predict_RR.mpredict()
 
 #display first element of Y to compare Ridge and linear regression
