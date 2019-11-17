@@ -9,9 +9,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression, Ridge
 import numpy as np
 from sklearn.metrics import mean_squared_error, r2_score
-
-
-
 from sklearn.preprocessing import PolynomialFeatures
 
 #===============================================================================
@@ -78,11 +75,9 @@ polynomial_features= PolynomialFeatures(degree=2)
 X_train_poly = polynomial_features.fit_transform(X_train)
 X_test_poly = polynomial_features.fit_transform(X_test)
 
-
 #create and fit linear regression model
 model_o2 = LinearRegression()
 model_o2.fit(X_train_poly, y_train)
-
 
 #aplly the model for predictting the test set outcome
 test_set_predict = model_o2.predict(X_test_poly)
