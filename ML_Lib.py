@@ -100,7 +100,8 @@ class linear_regression_predict_class():
 # https://towardsdatascience.com/linear-regression-detailed-view-ea73175f6e86
 
 class ridge_regression_class():
-    '''class for ridge regression'''
+    '''class for ridge regression |  
+       initialize class and then execute run()'''
     
     def __init__(self, X, Y, test_trian_ratio=.2, max_alpha=200, name_of_saved_model='finalized_model.sav'):
         #check for X, Y dimension match
